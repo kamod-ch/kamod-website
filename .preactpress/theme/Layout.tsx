@@ -28,31 +28,11 @@ function normalizeHash(link: string): string {
   return link.startsWith('#') ? link : '#home'
 }
 
-function useMatomo() {
-  useEffect(() => {
-    if (typeof window === 'undefined' || document.getElementById('kamod-matomo-script')) return
-
-    const win = window as Window & { _paq?: unknown[] }
-    const queue = (win._paq = win._paq || [])
-    queue.push(['trackPageView'])
-    queue.push(['enableLinkTracking'])
-    queue.push(['setTrackerUrl', '//matomo.kamod.ch/matomo.php'])
-    queue.push(['setSiteId', '4'])
-
-    const script = document.createElement('script')
-    script.id = 'kamod-matomo-script'
-    script.async = true
-    script.src = '//matomo.kamod.ch/matomo.js'
-    document.head.appendChild(script)
-  }, [])
-}
-
 const Layout: FunctionalComponent<LayoutProps> = ({ site, themeConfig, page }) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('#home')
   const [scrolled, setScrolled] = useState(false)
 
-  useMatomo()
 
   const navItems = useMemo(() => themeConfig.nav ?? [], [themeConfig.nav])
   const MdxComponent = page?.kind === 'mdx' ? page.Component : undefined

@@ -3,6 +3,9 @@ const matomoImageTracker =
 
 const includeMatomoImageTracker = process.env.PREACTPRESS_INCLUDE_MATOMO === 'true'
 
+const base = '/kamod-website/'
+const faviconHref = `${base === '/' ? '' : base.replace(/\/$/, '')}/favicon.ico`
+
 export default {
   srcExclude: ['README.md'],
   site: {
@@ -11,8 +14,9 @@ export default {
       'Professional IT solutions for modern enterprises. We transform complex challenges into scalable, secure, and efficient digital products.',
     lang: 'en',
     url: 'https://kamod-ch.github.io',
-    base: '/kamod-website/',
+    base,
   },
+  head: [['link', { rel: 'icon', href: faviconHref, type: 'image/x-icon' }]],
   theme: './theme/Layout.tsx',
   markdown: {
     html: false,
