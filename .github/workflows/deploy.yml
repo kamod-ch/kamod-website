@@ -36,8 +36,8 @@ jobs:
       - name: Check
         run: pnpm run check
 
-      - name: Build
-        run: pnpm run build
+      - name: Build for GitHub Pages
+        run: pnpm exec preactpress build . --base /${{ github.event.repository.name }}/
         env:
           PREACTPRESS_INCLUDE_MATOMO: 'true'
 

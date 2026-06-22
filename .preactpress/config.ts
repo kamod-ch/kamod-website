@@ -10,7 +10,8 @@ export default {
     description:
       'Professional IT solutions for modern enterprises. We transform complex challenges into scalable, secure, and efficient digital products.',
     lang: 'en',
-    url: 'https://kamod.ch'
+    url: 'https://kamod-ch.github.io',
+    base: '/kamod-website/',
   },
   theme: './theme/Layout.tsx',
   markdown: {
